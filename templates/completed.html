@@ -5,5 +5,14 @@
 {% block content %}
 
 <h1>You've already completed this survey</h1>
-
+<p>We recorded the following responses for you:</p>
+<ul>
+    {% for question in survey.questions %}
+    <li>
+        <b>{{ question.question }}:</b>
+        {{ responses[loop.index0]["choice"] }}
+        <i>{{ responses[loop.index0]["text"] }}</i>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
